@@ -46,6 +46,6 @@ ul {
 }
 
 li {
-  padding: 0 !important;           /* Remove padding from list items */
+  padding: 4px 0 !important;           /* Remove padding from list items */
   margin: 0 !important;            /* Remove margin from list items */
 }
