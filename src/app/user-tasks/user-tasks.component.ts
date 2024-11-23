@@ -1,16 +1,20 @@
-import {Component, Input, input} from '@angular/core';
+import {Component, EventEmitter, Input, input, Output} from '@angular/core';
 import {TaskComponent} from './task/task.component';
+import {AddTaskComponent} from './add-task/add-task.component';
 
 @Component({
   selector: 'app-user-tasks',
   templateUrl: './user-tasks.component.html',
   standalone: true,
   styleUrl: './user-tasks.component.css',
-  imports: [TaskComponent]
+  imports: [TaskComponent, AddTaskComponent]
 })
 export class UserTasksComponent {
   @Input() name!: string;
   @Input() userId!: string;
+  @Input()
+  isAddingTask = false;
+  @Output() createTask = new EventEmitter<void>();
 
   tasks = [
     {
@@ -40,6 +44,18 @@ export class UserTasksComponent {
 
   get selectedUserTasks() {
     return this.tasks.filter((task) => task.userId === this.userId);
+  }
+
+  onCompleteTask(id: string) {
+  this.tasks = this.tasks.filter((task) => task.id !== id);
+  }
+
+  onStartAddTask() {
+    this.isAddingTask = true;
+  }
+
+  onEndAddTask() {
+    this.isAddingTask = false;
   }
 
 }
