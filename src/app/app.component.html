@@ -3,30 +3,31 @@
 <main>
   <ul>
     <li>
-      <app-user [id]="users[0].id"
-                [avatar]="users[0].avatar"
-                [name]="users[0].name"
+      <app-user [user]="users[0]"
                 (select)="onSelectedUser($event)"/>
     </li>
     <li>
-      <app-user [id]="users[1].id"
-                [avatar]="users[1].avatar"
-                [name]="users[1].name"
+      <app-user [user]="users[1]"
                 (select)="onSelectedUser($event)"/>
     </li>
     <li>
-      <app-user [id]="users[2].id"
-                [avatar]="users[2].avatar"
-                [name]="users[2].name"
+      <app-user [user]="users[2]"
                 (select)="onSelectedUser($event)"/>
     </li>
     <li>
-      <app-user [id]="users[3].id"
-                [avatar]="users[3].avatar"
-                [name]="users[3].name"
+      <app-user [user]="users[3]"
                 (select)="onSelectedUser($event)"/>
     </li>
+    <li>
+      <app-user [user]="users[4]"
+                (select)="onSelectedUser($event)"/>
+    </li>
+    <li>
+      <app-user [user]="users[5]"
+                (select)="onSelectedUser($event)"/>
+    </li>
+
   </ul>
 
-  <app-user-tasks [name]="selectedUser.name"/>
+  <app-user-tasks [name]="selectedUser?.name"/>
 </main>
