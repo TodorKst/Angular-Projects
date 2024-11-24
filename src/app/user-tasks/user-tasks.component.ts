@@ -7,9 +7,8 @@ import {TaskService} from './task.service';
 @Component({
   selector: 'app-user-tasks',
   templateUrl: './user-tasks.component.html',
-  standalone: true,
+  standalone: false,
   styleUrl: './user-tasks.component.css',
-  imports: [TaskComponent, AddTaskComponent]
 })
 export class UserTasksComponent {
   @Input() name!: string;
