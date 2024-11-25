@@ -38,14 +38,3 @@ main {
     text-align: left;
   }
 }
-
-ul {
-  padding: 0 !important;           /* Remove default padding */
-  margin: 0 !important;            /* Remove default margin */
-  list-style-type: none !important; /* Remove bullet points */
-}
-
-li {
-  padding: 4px 0 !important;           /* Remove padding from list items */
-  margin: 0 !important;            /* Remove margin from list items */
-}
