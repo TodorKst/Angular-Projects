@@ -19,8 +19,13 @@ export class NewTicketComponent {
 
   @Output() add = new EventEmitter<{title: string, request: string}>();
 
-  onSubmit(titleInput: string, requestInput: string) {
-    this.add.emit({title: titleInput, request: requestInput});
-    this.form?.nativeElement.reset();
+  enteredTitle = '';
+  enteredRequest = '';
+
+  onSubmit() {
+    this.add.emit({title: this.enteredTitle, request: this.enteredRequest});
+    this.enteredTitle = '';
+    this.enteredRequest = '';
   }
+
 }
