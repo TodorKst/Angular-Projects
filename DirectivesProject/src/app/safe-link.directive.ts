@@ -1,4 +1,4 @@
-import {Directive} from "@angular/core";
+import {Directive, ElementRef, inject, input} from "@angular/core";
 import {$$deepEqual} from "@jsonjoy.com/util/lib/json-equal/$$deepEqual";
 
 @Directive({
@@ -9,6 +9,9 @@ import {$$deepEqual} from "@jsonjoy.com/util/lib/json-equal/$$deepEqual";
   }
 })
 export class SafeLinkDirective {
+  queryParam = input('myapp', {alias: 'appSafeLink'});
+  private hostElementRef = inject<ElementRef<HTMLAnchorElement>>(ElementRef);
+
   constructor() {
     console.log('SafeLinkDirective is Active!')
   }
@@ -17,6 +20,8 @@ export class SafeLinkDirective {
     const wantsToLeave = window.confirm('Are you sure you want to leave?');
 
     if (wantsToLeave) {
+      const address = this.hostElementRef.nativeElement.href;
+      this.hostElementRef.nativeElement.href = address + '?from=' + this.queryParam();
       return;
     }
 
