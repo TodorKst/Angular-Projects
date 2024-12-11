@@ -1,21 +1,23 @@
 import {Component, computed, inject, signal} from '@angular/core';
 
 import {TaskItemComponent} from './task-item/task-item.component';
-import {TasksService} from "../tasks.service";
-import {Task} from "../task.model";
+import {Task, TASK_STATUS_OPTIONS, taskStatusOptionsProvider} from "../task.model";
+import {TaskServiceToken} from "../../../main";
+import {FormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-tasks-list',
   standalone: true,
   templateUrl: './tasks-list.component.html',
   styleUrl: './tasks-list.component.css',
-  imports: [TaskItemComponent],
+  imports: [TaskItemComponent, FormsModule],
+  providers: [taskStatusOptionsProvider]
 })
 export class TasksListComponent {
-  private tasksService = inject(TasksService);
+  private tasksService = inject(TaskServiceToken);
+  private selectedFilter = signal<string>('all');
+  taskStatusOptions = inject(TASK_STATUS_OPTIONS);
 
-
-  selectedFilter = signal<string>('all');
   tasks = computed(() => {
     switch (this.selectedFilter()) {
       case 'all':
@@ -32,7 +34,6 @@ export class TasksListComponent {
   });
 
   onChangeTasksFilter(filter: string) {
-
     this.selectedFilter.set(filter);
   }
 }
