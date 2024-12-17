@@ -20,7 +20,7 @@ export class UserTasksComponent implements OnInit {
   private destroyRef = inject(DestroyRef);
 
   ngOnInit() {
-    console.log(this.activatedRoute);
+    console.log(this.activatedRoute.snapshot);
     const sub = this.activatedRoute.paramMap.subscribe({
       next: paramMap => {
         this.userName = this.usersService.users.find((u) => u.id === paramMap.get('userId'))?.name || '';
