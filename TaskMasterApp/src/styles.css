@@ -1,12 +1,25 @@
-/* General Styles */
+/* src/styles.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+/* Apply Inter font globally */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
 }
 
 body {
-  font-family: Arial, sans-serif;
-  background-color: #1e1414; /* Darker, fitting muted orange background */
-  color: #f9f4f4; /* Light text for contrast */
+  font-family: 'Inter', sans-serif;
+  font-size: 16px; /* Base font size */
+  line-height: 1.5; /* Improves readability */
+  background: #473b3b;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600; /* Use semi-bold for headings */
+}
+
+p, a, span, li {
+  font-weight: 400; /* Use regular weight for text */
 }

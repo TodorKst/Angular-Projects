@@ -15,22 +15,28 @@ p {
 }
 
 /* Navbar Styles */
+/* Updated Navbar Styles */
 .navbar {
   display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  background-color: #2c1b1b; /* Dark muted orange */
+  justify-content: space-between; /* Keeps the logo and nav items at the ends */
+  align-items: center; /* Vertically centers the items */
+  padding: 10px 20px; /* Adds horizontal padding */
+  background-color: #2b1d1d; /* Dark muted orange */
 }
 
 .navbar .logo {
   font-size: 1.8rem;
-  color: #ffa500;
+  color: #c8b39d;
+}
+
+.navbar nav {
+  display: flex; /* Ensures horizontal layout for links */
+  gap: 15px; /* Adds space between links */
 }
 
 .navbar nav a {
   text-decoration: none;
   color: #d5b49e;
-  margin: 0 15px;
   font-size: 1.2rem;
 }
 
@@ -51,7 +57,7 @@ p {
 }
 
 .user-card {
-  background-color: #3e2b2b; /* Darker background for cards */
+  background-color: #2b1d1d; /* Darker background for cards */
   border-radius: 10px;
   padding: 20px;
   width: 200px;
