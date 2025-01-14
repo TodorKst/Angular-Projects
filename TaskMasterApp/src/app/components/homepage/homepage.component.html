@@ -5,7 +5,12 @@
 
         @for (user of users; track user.id;) {
           <div class="user-card">
-            <img src="/images/defaultProfilePicture.webp" style="height: 30px; width: 30px">
+            @if (user.id <= 6) {
+              <img [src]="'/images/pfp' + user.id + '.jpg'" style="height: 40px; width: 40px; border-radius: 12px;">
+            } @else {
+              <img src="/images/defaultProfilePicture.webp" style="height: 40px; width: 40px; border-radius: 12px;" >
+            }
+
             <div class="user-info">
               <h4>{{user.name}}</h4>
             </div>

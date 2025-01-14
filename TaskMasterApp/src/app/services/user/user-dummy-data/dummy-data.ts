@@ -1,10 +1,10 @@
-import {UserModel} from '../../../models/user.model';
+import { UserModel } from '../../../models/user.model';
 
 export const userDummyData: UserModel[] = [
-  { id: 1, name: 'John Doe' },
-  { id: 2, name: 'Jane Smith' },
-  { id: 3, name: 'Michael Brown' },
-  { id: 4, name: 'Emily Davis' },
-  { id: 5, name: 'William Johnson' },
-  { id: 6, name: 'Olivia Martinez' },
+  { id: 1, name: 'James Carter' },
+  { id: 2, name: 'William Thompson' },
+  { id: 3, name: 'David Harris' },
+  { id: 4, name: 'Sarah Lee' },
+  { id: 5, name: 'Lily Chen' },
+  { id: 6, name: 'Jessica Turner' },
 ];
