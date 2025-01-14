@@ -7,6 +7,4 @@ export const userDummyData: UserModel[] = [
   { id: 4, name: 'Emily Davis' },
   { id: 5, name: 'William Johnson' },
   { id: 6, name: 'Olivia Martinez' },
-  { id: 7, name: 'James Wilson' },
-  { id: 8, name: 'Sophia Taylor' }
 ];

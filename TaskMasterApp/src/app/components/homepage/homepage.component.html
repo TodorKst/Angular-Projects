@@ -1,12 +1,24 @@
-<div class="card-container" >
+<div class="outer-container">
+  <div class="grid-container">
+    <div class="left-column">
 
-  @for (user of users; track user.id;) {
-    <div class="user-card">
-      <div class="user-info">
-        <h3>{{user.name}}</h3>
-        <p>Active Tasks: 5</p>
-      </div>
+
+        @for (user of users; track user.id;) {
+          <div class="user-card">
+            <img src="/images/defaultProfilePicture.webp" style="height: 30px; width: 30px">
+            <div class="user-info">
+              <h4>{{user.name}}</h4>
+            </div>
+          </div>
+        }
+
     </div>
-  }
-
+    <div class="right-column">
+      <p>Right Column</p>
+    </div>
+  </div>
 </div>
+
+
+
+
