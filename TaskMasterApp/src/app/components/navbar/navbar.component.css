@@ -4,6 +4,11 @@
   align-items: center; /* Vertically centers the items */
   padding: 10px 20px; /* Adds horizontal padding */
   background-color: #2b1d1d; /* Dark muted orange */
+  width: 70%; /* Sets the navbar width to 70% of the screen */
+  margin: 0 auto; /* Centers the navbar horizontally */
+  border-radius: 0 0 40px 40px; /* Creates rounded corners at the bottom */
+  position: relative; /* To ensure positioning for the 'tongue' effect */
+  height: 4rem;
 }
 
 .navbar .logo {

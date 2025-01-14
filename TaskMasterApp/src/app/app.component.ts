@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {Component} from '@angular/core';
 import {HomepageComponent} from './components/homepage/homepage.component';
 import {NavbarComponent} from './components/navbar/navbar.component';
 
