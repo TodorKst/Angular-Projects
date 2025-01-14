@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import {UserModel} from '../../models/user.model';
+import {userDummyData} from './user-dummy-data/dummy-data';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private users: UserModel[] = [];
-  private id = 1;
+  private users: UserModel[] = userDummyData;
+  private id = 9;
   constructor() {
 
   }
