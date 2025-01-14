@@ -16,33 +16,7 @@ p {
 
 /* Navbar Styles */
 /* Updated Navbar Styles */
-.navbar {
-  display: flex;
-  justify-content: space-between; /* Keeps the logo and nav items at the ends */
-  align-items: center; /* Vertically centers the items */
-  padding: 10px 20px; /* Adds horizontal padding */
-  background-color: #2b1d1d; /* Dark muted orange */
-}
 
-.navbar .logo {
-  font-size: 1.8rem;
-  color: #c8b39d;
-}
-
-.navbar nav {
-  display: flex; /* Ensures horizontal layout for links */
-  gap: 15px; /* Adds space between links */
-}
-
-.navbar nav a {
-  text-decoration: none;
-  color: #d5b49e;
-  font-size: 1.2rem;
-}
-
-.navbar nav a:hover {
-  color: #ffa500;
-}
 
 /* Card Container Styles */
 .card-container {
