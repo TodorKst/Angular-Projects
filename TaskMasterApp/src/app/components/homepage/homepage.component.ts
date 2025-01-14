@@ -10,14 +10,13 @@ import {UserModel} from '../../models/user.model';
   standalone: true
 })
 export class HomepageComponent {
+  users: UserModel[] = [];
 
   constructor(private userService: UserService) {
-
   }
 
-  getAllUsers(): UserModel[] {
-    console.log(this.userService.getAllUsers())
-    return this.userService.getAllUsers();
+  ngOnInit(): void {
+    this.users = this.userService.getAllUsers();
   }
 
 

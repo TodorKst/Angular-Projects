@@ -1,41 +1,12 @@
+<div class="card-container" >
 
-
-<div class="card-container" (click)="getAllUsers()">
-  <div class="user-card">
-    <div class="user-info">
-      <h3>User 1</h3>
-      <p>Active Tasks: 5</p>
+  @for (user of users; track user.id;) {
+    <div class="user-card">
+      <div class="user-info">
+        <h3>{{user.name}}</h3>
+        <p>Active Tasks: 5</p>
+      </div>
     </div>
-  </div>
-  <div class="user-card">
-    <div class="user-info">
-      <h3>User 2</h3>
-      <p>Active Tasks: 3</p>
-    </div>
-  </div>
-  <div class="user-card">
-    <div class="user-info">
-      <h3>User 3</h3>
-      <p>Active Tasks: 7</p>
-    </div>
-  </div>
-  <div class="user-card">
-    <div class="user-info">
-      <h3>User 4</h3>
-      <p>Active Tasks: 2</p>
-    </div>
-  </div>
-  <div class="user-card">
-    <div class="user-info">
-      <h3>User 5</h3>
-      <p>Active Tasks: 8</p>
-    </div>
-  </div>
-  <div class="user-card">
-    <div class="user-info">
-      <h3>User 6</h3>
-      <p>Active Tasks: 4</p>
-    </div>
-  </div>
+  }
 
 </div>
