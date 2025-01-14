@@ -6,7 +6,7 @@ import {UserModel} from '../../models/user.model';
 })
 export class UserService {
   private users: UserModel[] = [];
-
+  private id = 1;
   constructor() {
 
   }
@@ -15,8 +15,8 @@ export class UserService {
     return this.users;
   }
 
-  createUser(user: UserModel): void {
-    this.users.push(user);
+  createUser(name: string): void {
+    this.users.push({id: this.id++, name: name});
   }
 
   deleteUser(userId: number): void {

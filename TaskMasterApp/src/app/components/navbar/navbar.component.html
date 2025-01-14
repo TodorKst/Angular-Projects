@@ -3,6 +3,10 @@
   <nav>
     <a href="#">Home</a>
     <a href="#">Tasks</a>
-    <a href="#">Settings</a>
+    <a href="#" (click)="onStartAddUser()">Add User</a>
   </nav>
 </div>
+
+@if (isAddingUser()) {
+  <app-new-user [isAddingUser]="isAddingUser" />
+}
