@@ -3,6 +3,8 @@ import {UserService} from '../../services/user/user.service';
 import {UserModel} from '../../models/user.model';
 import {NgClass} from '@angular/common';
 import {TaskComponent} from '../task/task.component';
+import {TaskService} from '../../services/task/task.service';
+import {TaskModel} from '../../models/task.model';
 
 @Component({
   selector: 'app-homepage',
@@ -16,9 +18,11 @@ import {TaskComponent} from '../task/task.component';
 })
 export class HomepageComponent {
   selectedUser: UserModel | null = null;
+  selectedUserTasks: TaskModel[] = [];
   users: UserModel[] = [];
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService,
+              private taskService: TaskService) {
   }
 
   ngOnInit(): void {
@@ -27,6 +31,7 @@ export class HomepageComponent {
 
   selectUser(user: UserModel): void {
     this.selectedUser = user;
+    this.selectedUserTasks = this.taskService.getAllTasks().filter(task => task.userId === user.id);
     console.log('Selected user:', user.name);
   }
 

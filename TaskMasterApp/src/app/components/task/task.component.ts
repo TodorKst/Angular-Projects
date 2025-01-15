@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {UserModel} from '../../models/user.model';
+import {TaskModel} from '../../models/task.model';
 
 @Component({
   selector: 'app-task',
@@ -10,5 +11,7 @@ import {UserModel} from '../../models/user.model';
 })
 export class TaskComponent {
 @Input() selectedUser: UserModel | null = null;
+@Input() selectedUserTasks: TaskModel[] = [];
+
 
 }

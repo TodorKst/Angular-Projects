@@ -51,12 +51,6 @@
   overflow: visible;
 }
 
-/*.task-card:hover {*/
-/*  background-color: #4c3939; !* Slight hover effect *!*/
-/*  transform: scale(1.02); !* Enlarge slightly on hover *!*/
-/*  cursor: pointer;*/
-/*}*/
-
 .task-card h4 {
   margin-bottom: 0.5rem;
   font-size: 1.2rem;

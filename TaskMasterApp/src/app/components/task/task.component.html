@@ -2,26 +2,14 @@
   <div class="task-list-container">
     <h3>{{ selectedUser.name }}'s tasks</h3>
     <div class="task-list">
-      <div class="task-card">
-        <h4>Task 1</h4>
-        <p>Complete the project overview document.</p>
-      </div>
-      <div class="task-card">
-        <h4>Task 2</h4>
-        <p>Review the new design mockups.</p>
-      </div>
-      <div class="task-card">
-        <h4>Task 3</h4>
-        <p>Send feedback to the development team.</p>
-      </div>
-      <div class="task-card">
-        <h4>Task 4</h4>
-        <p>Prepare for the client presentation.</p>
-      </div>
-      <div class="task-card">
-        <h4>Task 5</h4>
-        <p>Update the project timeline with new deadlines.</p>
-      </div>
+
+      @for (task of selectedUserTasks; track task.id) {
+        <div class="task-card">
+          <h4>{{task.title}}</h4>
+          <p>{{ task.description }}</p>
+        </div>
+      }
+
     </div>
   </div>
 } @else {
