@@ -24,5 +24,9 @@ export class UserService {
     this.users = this.users.filter(user => user.id !== userId);
   }
 
+  getUserById(userId: number): UserModel {
+    return <UserModel>this.users.find(user => user.id === userId);
+  }
+
 
 }

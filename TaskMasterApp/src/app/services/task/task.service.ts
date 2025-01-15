@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
-import {Task} from '../../models/task.model';
+import {TaskModel} from '../../models/task.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TaskService {
-  private tasks:Task[] = [];
+  private tasks:TaskModel[] = [];
 
   constructor() { }
 
-  getAllTasks(): Task[] {
+  getAllTasks(): TaskModel[] {
     return this.tasks;
   }
 
-  createTask(task: Task): void {
+  createTask(task: TaskModel): void {
     this.tasks.push(task);
   }
 
@@ -21,7 +21,7 @@ export class TaskService {
     this.tasks = this.tasks.filter(task => task.id !== taskId);
   }
 
-  updateTask(task: Task): void {
+  updateTask(task: TaskModel): void {
     this.tasks = this.tasks.map(t => {
       if (t.id === task.id) {
         task.completed = true;

@@ -6,7 +6,8 @@
 }
 
 h4 {
-  color: #ffa500;
+  /*color: #ffa500;*/
+  color: #d3b39d;
 }
 
 p {
@@ -74,4 +75,21 @@ p {
   width: 65%;
   padding: 1rem;
 }
+
+.selected {
+  background-color: #d5b49e; /* Light blue background */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  transform: scale(1.02); /* Slightly enlarge the card */
+  transition: all 0.2s ease; /* Smooth transition for the styling */
+}
+
+.selected h4 {
+  color: #2b1d1d;
+}
+
+.selected:hover {
+  cursor: pointer;
+  background: #d5b49e;
+}
+
 

@@ -4,7 +4,7 @@
 
 
         @for (user of users; track user.id;) {
-          <div class="user-card">
+          <div class="user-card" (click)="selectUser(user)" [ngClass]="{'selected' : user.id === selectedUser?.id}">
             @if (user.id <= 6) {
               <img [src]="'/images/pfp' + user.id + '.jpg'" style="height: 40px; width: 40px; border-radius: 12px;">
             } @else {
