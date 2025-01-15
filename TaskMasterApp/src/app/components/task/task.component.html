@@ -7,11 +7,16 @@
         <div class="task-card">
           <h4>{{task.title}}</h4>
           <p>{{ task.description }}</p>
+          <div class="task-meta">
+            <span class="due-date">Due: {{ task.dueDate | date:'mediumDate' }}</span>
+            <button class="complete-btn" (click)="completeTask(task.id)">Complete</button>
+          </div>
         </div>
       }
 
     </div>
   </div>
+
 } @else {
   <div class="task-list-container">
     <h3>No user selected</h3>
