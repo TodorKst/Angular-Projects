@@ -2,11 +2,13 @@ import { Component } from '@angular/core';
 import {UserService} from '../../services/user/user.service';
 import {UserModel} from '../../models/user.model';
 import {NgClass} from '@angular/common';
+import {TaskComponent} from '../task/task.component';
 
 @Component({
   selector: 'app-homepage',
   imports: [
-    NgClass
+    NgClass,
+    TaskComponent
   ],
   templateUrl: './homepage.component.html',
   styleUrl: './homepage.component.css',
