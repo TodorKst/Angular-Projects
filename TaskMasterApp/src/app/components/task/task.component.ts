@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {UserModel} from '../../models/user.model';
 
 @Component({
   selector: 'app-task',
@@ -8,5 +9,6 @@ import { Component } from '@angular/core';
   standalone: true
 })
 export class TaskComponent {
+@Input() selectedUser: UserModel | null = null;
 
 }
