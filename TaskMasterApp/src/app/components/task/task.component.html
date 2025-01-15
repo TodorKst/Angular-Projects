@@ -1,8 +1,10 @@
 @if (selectedUser) {
   <div class="task-list-container">
-    <h3>{{ selectedUser.name }}'s tasks</h3>
+    <div class="header">
+      <h3>{{ selectedUser.name }}'s tasks</h3>
+      <button class="add-task-btn" (click)="onStartAddTask()">Add Task</button>
+    </div>
     <div class="task-list">
-
       @for (task of selectedUserTasks; track task.id) {
         <div class="task-card">
           <h4>{{task.title}}</h4>
@@ -13,9 +15,9 @@
           </div>
         </div>
       }
-
     </div>
   </div>
+
 
 } @else {
   <div class="task-list-container">
