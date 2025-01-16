@@ -1,0 +1,20 @@
+<div class="backdrop" (click)="closeDialog()"></div>
+<dialog open>
+  <h2>Create New User</h2>
+  <form ngForm>
+    <p>
+      <label for="firstName">First Name</label>
+      <input type="text" id="firstName" name="firstName" placeholder="Enter here..."/>
+    </p>
+    <div  style="margin-top: 10px"> </div>
+    <p>
+      <label for="lastName">Last Name</label>
+      <input id="lastName" name="lastName"  placeholder="Enter here..."/>
+    </p>
+
+    <p class="actions">
+      <button type="button" (click)="closeDialog()">Cancel</button>
+      <button type="submit" (click)="onCreateTask()">Create</button>
+    </p>
+  </form>
+</dialog>

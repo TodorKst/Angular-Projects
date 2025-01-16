@@ -1,13 +1,15 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, signal} from '@angular/core';
 import {UserModel} from '../../models/user.model';
 import {TaskModel} from '../../models/task.model';
 import {DatePipe} from '@angular/common';
 import {TaskService} from '../../services/task/task.service';
+import {NewTaskComponent} from '../new-task/new-task.component';
 
 @Component({
   selector: 'app-task',
   imports: [
-    DatePipe
+    DatePipe,
+    NewTaskComponent
   ],
   templateUrl: './task.component.html',
   styleUrl: './task.component.css',
@@ -16,6 +18,7 @@ import {TaskService} from '../../services/task/task.service';
 export class TaskComponent {
   @Input() selectedUser: UserModel | null = null;
   @Input() selectedUserTasks: TaskModel[] = [];
+  isAddingTask = signal(false);
 
   constructor(private taskService: TaskService) {
   }
@@ -26,6 +29,6 @@ export class TaskComponent {
   }
 
   onStartAddTask(): void {
-    console.log('Start adding task');
+    this.isAddingTask.set(true);
   }
 }

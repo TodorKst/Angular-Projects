@@ -35,3 +35,7 @@
   </div>
 }
 
+@if (isAddingTask()) {
+  <app-new-task [isAddingTask]="isAddingTask" />
+}
+
