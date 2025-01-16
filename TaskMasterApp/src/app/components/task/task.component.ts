@@ -17,18 +17,23 @@ import {NewTaskComponent} from '../new-task/new-task.component';
 })
 export class TaskComponent {
   @Input() selectedUser: UserModel | null = null;
-  @Input() selectedUserTasks: TaskModel[] = [];
+  selectedUserTasks = signal([] as TaskModel[]);
   isAddingTask = signal(false);
 
   constructor(private taskService: TaskService) {
   }
 
+  ngOnChanges(): void {
+    this.selectedUserTasks.set(this.taskService.getAllTasks().filter(task => task.userId === this.selectedUser?.id));
+  }
+
   completeTask(id: number): void {
     this.taskService.deleteTask(id);
-    this.selectedUserTasks = this.selectedUserTasks.filter(task => task.id !== id);
+    this.selectedUserTasks.set(this.taskService.getAllTasks().filter(task => task.userId === this.selectedUser?.id));
   }
 
   onStartAddTask(): void {
     this.isAddingTask.set(true);
+    console.log(this.taskService.getAllTasks());
   }
 }

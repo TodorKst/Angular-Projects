@@ -1,3 +1,4 @@
+/* Backdrop styling */
 .backdrop {
   background-color: rgba(0, 0, 0, 0.78);
   position: fixed;
@@ -8,26 +9,14 @@
   z-index: 1; /* Keep it above all users */
 }
 
-.modal-open .user-card {
-  opacity: 0.5; /* Darken all user cards when the modal is open */
-  pointer-events: none; /* Disable interactions */
-}
-
-.modal-open .user-card.selected {
-  opacity: 0.5; /* Ensure the selected user is also darkened */
-}
-
-.modal-open {
-  pointer-events: none; /* Prevent interaction with everything behind the modal */
-}
-
+/* Modal container styling */
 dialog {
   position: absolute;
   left: 50%;
   top: 36%;
   transform: translate(-50%, -50%);
-  width: 90%;
-  max-width: 20rem;
+  width: 95%; /* Slightly wider */
+  max-width: 30rem; /* Adjusted for more space */
   background-color: #463b3b;
   border-radius: 6px;
   border: none;
@@ -37,13 +26,13 @@ dialog {
   z-index: 2; /* Ensure the dialog is above everything */
 }
 
-
-
+/* Dialog header styling */
 h2 {
   margin: 0;
   color: #c6b29c;
 }
 
+/* Label styling */
 label {
   display: block;
   font-weight: bold;
@@ -51,6 +40,7 @@ label {
   color: #c6b29c;
 }
 
+/* Input and textarea styling */
 input,
 textarea {
   width: 100%;
@@ -61,6 +51,7 @@ textarea {
   background-color: #c6b29c;
 }
 
+/* Actions container */
 .actions {
   margin: 1rem 0 0;
   display: flex;
@@ -68,6 +59,7 @@ textarea {
   gap: 0.25rem;
 }
 
+/* Button styling */
 button {
   font: inherit;
   cursor: pointer;
@@ -99,6 +91,7 @@ button[type="submit"]:active {
   color: #c6b29c;
 }
 
+/* Responsive design */
 @media (min-width: 768px) {
   dialog {
     padding: 2rem;

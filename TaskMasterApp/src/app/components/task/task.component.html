@@ -5,7 +5,7 @@
       <button class="add-task-btn" (click)="onStartAddTask()">Add Task</button>
     </div>
     <div class="task-list">
-      @for (task of selectedUserTasks; track task.id) {
+      @for (task of selectedUserTasks(); track task.id) {
         <div class="task-card">
           <h4>{{task.title}}</h4>
           <p>{{ task.description }}</p>
@@ -36,6 +36,6 @@
 }
 
 @if (isAddingTask()) {
-  <app-new-task [isAddingTask]="isAddingTask" />
+  <app-new-task [isAddingTask]="isAddingTask" [selectedUser]="selectedUser" [userTasks]="selectedUserTasks"/>
 }
 

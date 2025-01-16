@@ -7,6 +7,7 @@ import {TaskDummyData} from '../dummydata/task-dummy-data';
 })
 export class TaskService {
   private tasks:TaskModel[] = [];
+  private id = 13;
 
   constructor() {
     this.tasks = TaskDummyData;
@@ -16,8 +17,16 @@ export class TaskService {
     return this.tasks;
   }
 
-  createTask(task: TaskModel): void {
+  createTask(title: string, description: string, date: Date, userId: number): void {
+    const task: TaskModel = {
+      id: this.id++,
+      userId: userId,
+      title,
+      description,
+      dueDate: date
+    };
     this.tasks.push(task);
+    console.log(task);
   }
 
   deleteTask(taskId: number): void {
