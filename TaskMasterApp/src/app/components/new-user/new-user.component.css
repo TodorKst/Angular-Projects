@@ -5,6 +5,20 @@
   left: 0;
   width: 100%;
   height: 100vh;
+  z-index: 1; /* Keep it above all users */
+}
+
+.modal-open .user-card {
+  opacity: 0.5; /* Darken all user cards when the modal is open */
+  pointer-events: none; /* Disable interactions */
+}
+
+.modal-open .user-card.selected {
+  opacity: 0.5; /* Ensure the selected user is also darkened */
+}
+
+.modal-open {
+  pointer-events: none; /* Prevent interaction with everything behind the modal */
 }
 
 dialog {
@@ -20,7 +34,9 @@ dialog {
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
   overflow: hidden;
   padding: 1rem;
+  z-index: 2; /* Ensure the dialog is above everything */
 }
+
 
 
 h2 {
