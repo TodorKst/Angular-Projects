@@ -16,6 +16,8 @@ import {NewTaskComponent} from '../new-task/new-task.component';
   standalone: true
 })
 export class TaskComponent {
+  sortingOrder = signal('asc');
+
   @Input() selectedUser: UserModel | null = null;
   selectedUserTasks = signal([] as TaskModel[]);
   isAddingTask = signal(false);
@@ -35,5 +37,21 @@ export class TaskComponent {
   onStartAddTask(): void {
     this.isAddingTask.set(true);
     console.log(this.taskService.getAllTasks());
+  }
+
+  changeSortOrder() {
+    if (this.sortingOrder() === 'asc') {
+      this.sortingOrder.set('desc');
+    } else {
+      this.sortingOrder.set('asc');
+    }
+
+    if (this.sortingOrder() === 'asc') {
+      //sort by id ascending
+      this.selectedUserTasks.set(this.selectedUserTasks().sort((a, b) => a.id - b.id));
+    } else {
+      //sort by id descending
+      this.selectedUserTasks.set(this.selectedUserTasks().sort((a, b) => b.id - a.id));
+    }
   }
 }

@@ -1,7 +1,16 @@
 @if (selectedUser) {
   <div class="task-list-container">
     <div class="header">
-      <h3>{{ selectedUser.name }}'s tasks</h3>
+      <div>
+        <h3>{{ selectedUser.name }}'s tasks</h3>
+
+        @if (sortingOrder() === 'asc') {
+          <span class="sort" (click)="changeSortOrder()">Sort Descending</span>
+        } @else {
+          <span class="sort" (click)="changeSortOrder()">Sort Ascending</span>
+        }
+
+      </div>
       <button class="add-task-btn" (click)="onStartAddTask()">Add Task</button>
     </div>
     <div class="task-list">
@@ -17,6 +26,7 @@
       }
     </div>
   </div>
+
 
 
 } @else {
