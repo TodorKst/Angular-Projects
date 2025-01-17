@@ -18,6 +18,8 @@ export class TaskService {
     const tasks = localStorage.getItem(this.storageKey);
     if (tasks) {
       this.tasks = JSON.parse(tasks);
+      this.id = this.tasks.reduce((prev, current) => (prev.id > current.id) ? prev : current).id + 1;
+      console.log(this.id);
     } else {
       this.tasks = TaskDummyData;
       this.saveTasksToStorage();
