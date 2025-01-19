@@ -41,7 +41,8 @@ export class TaskService {
       userId: userId,
       title,
       description,
-      dueDate: date
+      dueDate: date,
+      status: 'Open'
     };
     this.tasks.push(task);
     this.saveTasksToStorage(); // Save to localStorage
@@ -50,6 +51,17 @@ export class TaskService {
 
   deleteTask(taskId: number): void {
     this.tasks = this.tasks.filter(task => task.id !== taskId);
+    this.saveTasksToStorage(); // Update localStorage
+  }
+
+  updateTaskStatus(taskId: number): void {
+    const task = this.tasks.find(task => task.id === taskId);
+
+    if (task?.status === 'Open') {
+      task.status = 'In Progress';
+    } else if (task?.status === 'In Progress') {
+      task.status = 'Completed';
+    }
     this.saveTasksToStorage(); // Update localStorage
   }
 }

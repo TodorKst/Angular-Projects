@@ -16,13 +16,42 @@
     <div class="task-list">
       @for (task of selectedUserTasks(); track task.id) {
         <div class="task-card">
-          <h4>{{task.title}}</h4>
+          <h4>{{ task.title }}</h4>
           <p>{{ task.description }}</p>
           <div class="task-meta">
-            <span class="due-date">Due: {{ task.dueDate | date:'mediumDate' }}</span>
-            <button class="complete-btn" (click)="completeTask(task.id)">Complete</button>
+            <div class="task-status">
+              <div class="status-indicator">
+
+                <div
+                  class="circle"
+                  [ngClass]="{'filled': task.status === 'Open' || task.status === 'In Progress' || task.status === 'Completed'}">
+                </div>
+                <div class="line"></div>
+                <div
+                  class="circle"
+                  [ngClass]="{'filled': task.status === 'In Progress' || task.status === 'Completed'}">
+                </div>
+                <div class="line"></div>
+                <div
+                  class="circle"
+                  [ngClass]="{'filled': task.status === 'Completed'}">
+                </div>
+              </div>
+              <span class="status-label">Task Status: {{ task.status | titlecase }}</span>
+
+              <span class="due-date">Due Date: {{ task.dueDate | date:'mediumDate' }}</span>
+            </div>
+            @if (task.status === 'Completed') {
+              <button class="complete-btn" (click)="deleteTask(task.id)">Delete Task</button>
+            } @else {
+              <button class="complete-btn" (click)="updateStatus(task.id)">Update Status</button>
+
+            }
           </div>
         </div>
+
+
+
       }
     </div>
   </div>

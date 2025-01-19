@@ -1,15 +1,17 @@
 import {Component, Input, signal} from '@angular/core';
 import {UserModel} from '../../models/user.model';
 import {TaskModel} from '../../models/task.model';
-import {DatePipe} from '@angular/common';
+import {DatePipe, NgClass, TitleCasePipe} from '@angular/common';
 import {TaskService} from '../../services/task/task.service';
 import {NewTaskComponent} from '../new-task/new-task.component';
 
 @Component({
   selector: 'app-task',
   imports: [
-    DatePipe,
-    NewTaskComponent
+    NewTaskComponent,
+    NgClass,
+    TitleCasePipe,
+    DatePipe
   ],
   templateUrl: './task.component.html',
   styleUrl: './task.component.css',
@@ -29,7 +31,7 @@ export class TaskComponent {
     this.selectedUserTasks.set(this.taskService.getAllTasks().filter(task => task.userId === this.selectedUser?.id));
   }
 
-  completeTask(id: number): void {
+  deleteTask(id: number): void {
     this.taskService.deleteTask(id);
     this.selectedUserTasks.set(this.taskService.getAllTasks().filter(task => task.userId === this.selectedUser?.id));
   }
@@ -47,11 +49,14 @@ export class TaskComponent {
     }
 
     if (this.sortingOrder() === 'asc') {
-      //sort by id ascending
       this.selectedUserTasks.set(this.selectedUserTasks().sort((a, b) => a.id - b.id));
     } else {
-      //sort by id descending
       this.selectedUserTasks.set(this.selectedUserTasks().sort((a, b) => b.id - a.id));
     }
+  }
+
+  updateStatus(taskId: number) {
+    this.taskService.updateTaskStatus(taskId);
+    console.log(this.taskService.getAllTasks().filter(task => task.userId === this.selectedUser?.id));
   }
 }
