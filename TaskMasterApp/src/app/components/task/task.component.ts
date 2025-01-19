@@ -1,14 +1,12 @@
-import {Component, Input, signal} from '@angular/core';
-import {UserModel} from '../../models/user.model';
+import {Component, input, Input, signal, WritableSignal} from '@angular/core';
 import {TaskModel} from '../../models/task.model';
 import {DatePipe, NgClass, TitleCasePipe} from '@angular/common';
 import {TaskService} from '../../services/task/task.service';
-import {NewTaskComponent} from '../new-task/new-task.component';
+import {UserModel} from '../../models/user.model';
 
 @Component({
   selector: 'app-task',
   imports: [
-    NewTaskComponent,
     NgClass,
     TitleCasePipe,
     DatePipe
@@ -18,45 +16,28 @@ import {NewTaskComponent} from '../new-task/new-task.component';
   standalone: true
 })
 export class TaskComponent {
-  sortingOrder = signal('asc');
 
+  @Input() task: TaskModel | null = null;
+  @Input() selectedUserTasks = signal([] as TaskModel[]);
   @Input() selectedUser: UserModel | null = null;
-  selectedUserTasks = signal([] as TaskModel[]);
-  isAddingTask = signal(false);
 
   constructor(private taskService: TaskService) {
   }
 
-  ngOnChanges(): void {
-    this.selectedUserTasks.set(this.taskService.getAllTasks().filter(task => task.userId === this.selectedUser?.id));
-  }
-
-  deleteTask(id: number): void {
+  deleteTask(id: number | undefined): void {
+    if (!id) {
+      return;
+    }
     this.taskService.deleteTask(id);
     this.selectedUserTasks.set(this.taskService.getAllTasks().filter(task => task.userId === this.selectedUser?.id));
   }
 
-  onStartAddTask(): void {
-    this.isAddingTask.set(true);
-    console.log(this.taskService.getAllTasks());
-  }
-
-  changeSortOrder() {
-    if (this.sortingOrder() === 'asc') {
-      this.sortingOrder.set('desc');
-    } else {
-      this.sortingOrder.set('asc');
+  updateStatus(taskId: number | undefined) {
+    if (!taskId) {
+      return;
     }
-
-    if (this.sortingOrder() === 'asc') {
-      this.selectedUserTasks.set(this.selectedUserTasks().sort((a, b) => a.id - b.id));
-    } else {
-      this.selectedUserTasks.set(this.selectedUserTasks().sort((a, b) => b.id - a.id));
-    }
-  }
-
-  updateStatus(taskId: number) {
     this.taskService.updateTaskStatus(taskId);
     console.log(this.taskService.getAllTasks().filter(task => task.userId === this.selectedUser?.id));
   }
+
 }

@@ -1,0 +1,38 @@
+@if (selectedUser) {
+  <div class="task-list-container">
+    <div class="header">
+      <div>
+        <h3>{{ selectedUser.name }}'s tasks</h3>
+
+        @if (sortingOrder() === 'asc') {
+          <span class="sort" (click)="changeSortOrder()">Sort Descending</span>
+        } @else {
+          <span class="sort" (click)="changeSortOrder()">Sort Ascending</span>
+        }
+
+      </div>
+      <button class="add-task-btn" (click)="onStartAddTask()">Add Task</button>
+    </div>
+    <div class="task-list">
+      @for (task of selectedUserTasks(); track task.id) {
+
+        <app-task [task]="task" [selectedUserTasks]="selectedUserTasks" [selectedUser]="selectedUser"/>
+
+      }
+    </div>
+  </div>
+
+
+
+} @else {
+  <div class="task-list-container">
+    <div class="task-list">
+    <app-task />
+    </div>
+  </div>
+}
+
+@if (isAddingTask()) {
+  <app-new-task [isAddingTask]="isAddingTask" [selectedUser]="selectedUser" [userTasks]="selectedUserTasks"/>
+}
+

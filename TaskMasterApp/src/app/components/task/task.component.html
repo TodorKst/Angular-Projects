@@ -1,80 +1,49 @@
 @if (selectedUser) {
-  <div class="task-list-container">
-    <div class="header">
-      <div>
-        <h3>{{ selectedUser.name }}'s tasks</h3>
+<div class="task-card">
+  <h4>{{ task?.title }}</h4>
+  <p>{{ task?.description }}</p>
+  <div class="task-meta">
+    <div class="task-status">
+      <div class="status-indicator">
 
-        @if (sortingOrder() === 'asc') {
-          <span class="sort" (click)="changeSortOrder()">Sort Descending</span>
-        } @else {
-          <span class="sort" (click)="changeSortOrder()">Sort Ascending</span>
-        }
-
-      </div>
-      <button class="add-task-btn" (click)="onStartAddTask()">Add Task</button>
-    </div>
-    <div class="task-list">
-      @for (task of selectedUserTasks(); track task.id) {
-        <div class="task-card">
-          <h4>{{ task.title }}</h4>
-          <p>{{ task.description }}</p>
-          <div class="task-meta">
-            <div class="task-status">
-              <div class="status-indicator">
-
-                <div
-                  class="circle"
-                  [ngClass]="{'filled': task.status === 'Open' || task.status === 'In Progress' || task.status === 'Completed'}">
-                </div>
-                <div class="line"></div>
-                <div
-                  class="circle"
-                  [ngClass]="{'filled': task.status === 'In Progress' || task.status === 'Completed'}">
-                </div>
-                <div class="line"></div>
-                <div
-                  class="circle"
-                  [ngClass]="{'filled': task.status === 'Completed'}">
-                </div>
-              </div>
-              <span class="status-label">Task Status: {{ task.status | titlecase }}</span>
-
-              <span class="due-date">Due Date: {{ task.dueDate | date:'mediumDate' }}</span>
-            </div>
-            @if (task.status === 'Completed') {
-              <button class="complete-btn" (click)="deleteTask(task.id)">Delete Task</button>
-            } @else {
-              <button class="complete-btn" (click)="updateStatus(task.id)">Update Status</button>
-
-            }
-          </div>
+        <div
+          class="circle"
+          [ngClass]="{'filled': task?.status === 'Open' || task?.status === 'In Progress' || task?.status === 'Completed'}">
         </div>
+        <div class="line"></div>
+        <div
+          class="circle"
+          [ngClass]="{'filled': task?.status === 'In Progress' || task?.status === 'Completed'}">
+        </div>
+        <div class="line"></div>
+        <div
+          class="circle"
+          [ngClass]="{'filled': task?.status === 'Completed'}">
+        </div>
+      </div>
+      <span class="status-label">Task Status: {{ task?.status | titlecase }}</span>
 
-
-
-      }
+      <span class="due-date">Due Date: {{ task?.dueDate | date:'mediumDate' }}</span>
     </div>
+    @if (task?.status === 'Completed') {
+      <button class="complete-btn" (click)="deleteTask(task?.id)">Delete Task</button>
+    } @else {
+      <button class="complete-btn" (click)="updateStatus(task?.id)">Update Status</button>
+
+    }
   </div>
-
-
+</div>
 
 } @else {
-  <div class="task-list-container">
-    <h3>No user selected</h3>
-    <div class="task-list">
-      @for (i of [1,2,3,4]; track i;) {
-        <div class="task-card">
-          <h4>------</h4>
-          <p>-----------------------------------------</p>
-        </div>
-      }
 
+<h3>No user selected</h3>
 
+  @for (i of [1,2,3,4]; track i;) {
+    <div class="task-card">
+      <h4>------</h4>
+      <p>-----------------------------------------</p>
     </div>
-  </div>
-}
+  }
 
-@if (isAddingTask()) {
-  <app-new-task [isAddingTask]="isAddingTask" [selectedUser]="selectedUser" [userTasks]="selectedUserTasks"/>
-}
 
+}

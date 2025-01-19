@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {UserService} from '../../services/user/user.service';
 import {UserModel} from '../../models/user.model';
 import {NgClass} from '@angular/common';
-import {TaskComponent} from '../task/task.component';
+import {TaskListComponent} from '../task-list/task-list.component';
 import {TaskService} from '../../services/task/task.service';
 import {TaskModel} from '../../models/task.model';
 
@@ -10,7 +10,7 @@ import {TaskModel} from '../../models/task.model';
   selector: 'app-homepage',
   imports: [
     NgClass,
-    TaskComponent
+    TaskListComponent
   ],
   templateUrl: './homepage.component.html',
   styleUrl: './homepage.component.css',
