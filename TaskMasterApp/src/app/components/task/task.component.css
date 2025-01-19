@@ -8,7 +8,7 @@
 }
 
 .task-card h4 {
-  margin-bottom: 0.5rem;
+  /*margin-bottom: 0.5rem;*/
   font-size: 1.2rem;
   color: #ffa500; /* Orange color for task title */
 }
@@ -22,7 +22,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   font-size: 0.9rem;
   color: #d5b49e;
 }
@@ -107,3 +107,79 @@
   color: #e67e00; /* Darker orange on hover */
   text-decoration: underline; /* Underline for emphasis */
 }
+
+/* General Task Card */
+.task-card {
+  background-color: #3b2d2d;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.task-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #d5b49e;
+}
+
+/* Placeholder Styling */
+.task-card.placeholder {
+  background-color: #3b2d2d; /* Darker shade to distinguish */
+  color: #6e5e5e; /* Gray text color */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05); /* Softer shadow */
+  margin-bottom: 1rem;
+}
+
+.task-card.placeholder h4,
+.task-card.placeholder p,
+.task-card.placeholder .status-label,
+.task-card.placeholder .due-date {
+  background-color: #4a3a3a; /* Solid background to indicate loading state */
+  color: transparent;
+  border-radius: 4px;
+}
+
+.task-card.placeholder h4 {
+  width: 30%;
+  height: 1rem;
+}
+
+.task-card.placeholder p {
+  width: 80%;
+  height: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+.task-card.placeholder .status-label,
+.task-card.placeholder .due-date {
+  width: 50%;
+  height: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+.task-card.placeholder .circle {
+  background-color: #4a3a3a;
+}
+
+.task-card.placeholder .line {
+  background-color: #4a3a3a;
+}
+
+/* Disable Button */
+.complete-btn.disabled {
+  background-color: #4a3a3a;
+  color: #6e5e5e;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+h3 {
+  text-align: center; /* Center text horizontally */
+  margin-bottom: 10px; /* Remove any default margins */
+  padding: 0; /* Remove padding if needed */
+}
+

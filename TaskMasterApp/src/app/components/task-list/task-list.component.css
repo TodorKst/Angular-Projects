@@ -47,7 +47,7 @@
   width: 100%;
   overflow-y: auto;
   overflow-x: visible;
-  max-height: 370px; /* Ensure scrolling happens if content exceeds this height */
+  max-height: 100%;
   padding-right: 8px; /* Add spacing for the scrollbar */
 }
 

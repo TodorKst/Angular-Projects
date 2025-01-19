@@ -1,49 +1,55 @@
 @if (selectedUser) {
-<div class="task-card">
-  <h4>{{ task?.title }}</h4>
-  <p>{{ task?.description }}</p>
-  <div class="task-meta">
-    <div class="task-status">
-      <div class="status-indicator">
-
-        <div
-          class="circle"
-          [ngClass]="{'filled': task?.status === 'Open' || task?.status === 'In Progress' || task?.status === 'Completed'}">
+  <div class="task-card">
+    <h4>{{ task?.title }}</h4>
+    <p>{{ task?.description }}</p>
+    <div class="task-meta">
+      <div class="task-status">
+        <div class="status-indicator">
+          <div
+            class="circle"
+            [ngClass]="{'filled': task?.status === 'Open' || task?.status === 'In Progress' || task?.status === 'Completed'}">
+          </div>
+          <div class="line"></div>
+          <div
+            class="circle"
+            [ngClass]="{'filled': task?.status === 'In Progress' || task?.status === 'Completed'}">
+          </div>
+          <div class="line"></div>
+          <div
+            class="circle"
+            [ngClass]="{'filled': task?.status === 'Completed'}">
+          </div>
         </div>
-        <div class="line"></div>
-        <div
-          class="circle"
-          [ngClass]="{'filled': task?.status === 'In Progress' || task?.status === 'Completed'}">
-        </div>
-        <div class="line"></div>
-        <div
-          class="circle"
-          [ngClass]="{'filled': task?.status === 'Completed'}">
-        </div>
+        <span class="status-label">Task Status: {{ task?.status | titlecase }}</span>
+        <span class="due-date">Due Date: {{ task?.dueDate | date:'mediumDate' }}</span>
       </div>
-      <span class="status-label">Task Status: {{ task?.status | titlecase }}</span>
-
-      <span class="due-date">Due Date: {{ task?.dueDate | date:'mediumDate' }}</span>
+      @if (task?.status === 'Completed') {
+        <button class="complete-btn" (click)="deleteTask(task?.id)">Delete Task</button>
+      } @else {
+        <button class="complete-btn" (click)="updateStatus(task?.id)">Update Status</button>
+      }
     </div>
-    @if (task?.status === 'Completed') {
-      <button class="complete-btn" (click)="deleteTask(task?.id)">Delete Task</button>
-    } @else {
-      <button class="complete-btn" (click)="updateStatus(task?.id)">Update Status</button>
-
-    }
   </div>
-</div>
-
 } @else {
-
-<h3>No user selected</h3>
-
-  @for (i of [1,2,3,4]; track i;) {
-    <div class="task-card">
-      <h4>------</h4>
-      <p>-----------------------------------------</p>
+  <h3>Select a User</h3>
+  @for (i of [1, 2, 3, 4]; track i;) {
+    <div class="task-card placeholder">
+      <h4>----</h4>
+      <p>-------------------------</p>
+      <div class="task-meta">
+        <div class="task-status">
+          <div class="status-indicator">
+            <div class="circle"></div>
+            <div class="line"></div>
+            <div class="circle"></div>
+            <div class="line"></div>
+            <div class="circle"></div>
+          </div>
+          <span class="status-label">Task Status: ------</span>
+          <span class="due-date">Due Date: --------</span>
+        </div>
+        <button class="complete-btn disabled" disabled>------</button>
+      </div>
     </div>
   }
-
-
 }
