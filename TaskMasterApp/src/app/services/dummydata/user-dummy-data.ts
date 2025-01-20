@@ -1,6 +1,6 @@
 import { UserModel } from '../../models/user.model';
 
-export const userDummyData: UserModel[] = [
+export const UserDummyData: UserModel[] = [
   { id: 1, name: 'James Carter' },
   { id: 2, name: 'William Thompson' },
   { id: 3, name: 'David Harris' },
