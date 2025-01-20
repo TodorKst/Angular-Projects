@@ -1407,20 +1407,48 @@
     <schema id="524" parent="1" name="vacations">
       <CollationName>latin1_swedish_ci</CollationName>
     </schema>
-    <user id="525" parent="1" name="mariadb.sys">
+    <schema id="525" parent="1" name="taskmaster">
+      <LastIntrospectionLocalTimestamp>2025-01-20.18:38:01</LastIntrospectionLocalTimestamp>
+      <CollationName>latin1_swedish_ci</CollationName>
+    </schema>
+    <user id="526" parent="1" name="mariadb.sys">
       <Host>localhost</Host>
-    </user>
-    <user id="526" parent="1" name="root">
-      <Host>127.0.0.1</Host>
     </user>
     <user id="527" parent="1" name="root">
-      <Host>::1</Host>
+      <Host>127.0.0.1</Host>
     </user>
     <user id="528" parent="1" name="root">
-      <Host>desktop-oh58594</Host>
+      <Host>::1</Host>
     </user>
     <user id="529" parent="1" name="root">
+      <Host>desktop-oh58594</Host>
+    </user>
+    <user id="530" parent="1" name="root">
       <Host>localhost</Host>
     </user>
+    <table id="531" parent="525" name="users">
+      <Engine>InnoDB</Engine>
+      <CollationName>latin1_swedish_ci</CollationName>
+    </table>
+    <column id="532" parent="531" name="id">
+      <AutoIncrement>1</AutoIncrement>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>int(11)|0s</StoredType>
+    </column>
+    <column id="533" parent="531" name="name">
+      <Position>2</Position>
+      <StoredType>text|0s</StoredType>
+    </column>
+    <index id="534" parent="531" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="535" parent="531" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
   </database-model>
 </dataSource>

@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {HomepageComponent} from './components/homepage/homepage.component';
 import {NavbarComponent} from './components/navbar/navbar.component';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 
 @Component({
   selector: 'app-root',

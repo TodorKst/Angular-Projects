@@ -26,7 +26,8 @@ export class HomepageComponent {
   }
 
   ngOnInit(): void {
-    this.users = this.userService.getAllUsers();
+    this.userService.getAllUsers().subscribe((data: UserModel[]) => {
+      this.users = data;});
   }
 
   selectUser(user: UserModel): void {
