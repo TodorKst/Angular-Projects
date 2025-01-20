@@ -4,11 +4,24 @@
       <div>
         <h3>{{ selectedUser.name }}'s tasks</h3>
 
-        @if (sortingOrder() === 'asc') {
-          <span class="sort" (click)="changeSortOrder()">Sort Descending</span>
-        } @else {
-          <span class="sort" (click)="changeSortOrder()">Sort Ascending</span>
-        }
+        <div>
+          <div class="filter-sort-container">
+            <select class="filter-dropdown" (change)="filterTasks($event)">
+              <option value="All">All</option>
+              <option value="Open">Open</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Completed">Completed</option>
+            </select>
+
+
+            @if (sortingOrder() === 'asc') {
+              <span class="sort" (click)="changeSortOrder()">Sort Descending</span>
+            } @else {
+              <span class="sort" (click)="changeSortOrder()">Sort Ascending</span>
+            }
+          </div>
+        </div>
+
 
       </div>
       <button class="add-task-btn" (click)="onStartAddTask()">Add Task</button>

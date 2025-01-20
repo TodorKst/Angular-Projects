@@ -85,3 +85,30 @@
   color: #e67e00; /* Darker orange on hover */
   text-decoration: underline; /* Underline for emphasis */
 }
+
+.filter-sort-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Space between dropdown and sort text */
+}
+
+.filter-dropdown {
+  background-color: #3b2d2d; /* Same dark background as the container */
+  color: #d3b39d; /* Text color matching the theme */
+  border: 1px solid #2b1d1d; /* Explicit border color */
+  border-radius: 4px; /* Rounded corners */
+  padding: 4px 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.filter-dropdown:hover,
+.filter-dropdown:focus {
+  background-color: #3b2d2d; /* Same dark background as the container */
+  color: #d3b39d; /* Text color matching the theme */
+  /*border: 1px solid #ffa500; !* Highlight border color on focus *!*/
+  outline: none; /* Removes the default white border */
+}
+
+

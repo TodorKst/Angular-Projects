@@ -1,10 +1,10 @@
 import {Component, Input, signal} from '@angular/core';
 import {UserModel} from '../../models/user.model';
 import {TaskModel} from '../../models/task.model';
-import {DatePipe, NgClass, TitleCasePipe} from '@angular/common';
 import {TaskService} from '../../services/task/task.service';
 import {NewTaskComponent} from '../new-task/new-task.component';
 import {TaskComponent} from '../task/task.component';
+import {NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-task-list',
@@ -23,13 +23,14 @@ export class TaskListComponent {
   selectedUserTasks = signal([] as TaskModel[]);
   isAddingTask = signal(false);
 
+  currentFilter = 'all';
+
   constructor(private taskService: TaskService) {
   }
 
   ngOnChanges(): void {
     this.selectedUserTasks.set(this.taskService.getAllTasks().filter(task => task.userId === this.selectedUser?.id));
   }
-
 
 
   onStartAddTask(): void {
@@ -51,5 +52,13 @@ export class TaskListComponent {
     }
   }
 
+  filterTasks(event: Event) {
+    this.currentFilter = (event.target as HTMLSelectElement).value;
+    if (this.currentFilter === 'All') {
+      this.selectedUserTasks.set(this.taskService.getAllTasks().filter(task => task.userId === this.selectedUser?.id));
+    } else {
+      this.selectedUserTasks.set(this.taskService.getAllTasks().filter(task => task.userId === this.selectedUser?.id && task.status === this.currentFilter));
+    }
+  }
 
 }
