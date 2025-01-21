@@ -1408,7 +1408,7 @@
       <CollationName>latin1_swedish_ci</CollationName>
     </schema>
     <schema id="525" parent="1" name="taskmaster">
-      <LastIntrospectionLocalTimestamp>2025-01-20.18:38:01</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2025-01-21.00:38:17</LastIntrospectionLocalTimestamp>
       <CollationName>latin1_swedish_ci</CollationName>
     </schema>
     <user id="526" parent="1" name="mariadb.sys">
@@ -1426,26 +1426,76 @@
     <user id="530" parent="1" name="root">
       <Host>localhost</Host>
     </user>
-    <table id="531" parent="525" name="users">
+    <table id="531" parent="525" name="tasks">
       <Engine>InnoDB</Engine>
       <CollationName>latin1_swedish_ci</CollationName>
     </table>
-    <column id="532" parent="531" name="id">
+    <table id="532" parent="525" name="users">
+      <Engine>InnoDB</Engine>
+      <CollationName>latin1_swedish_ci</CollationName>
+    </table>
+    <column id="533" parent="531" name="id">
       <AutoIncrement>1</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int(11)|0s</StoredType>
     </column>
-    <column id="533" parent="531" name="name">
+    <column id="534" parent="531" name="userId">
+      <NotNull>1</NotNull>
       <Position>2</Position>
+      <StoredType>int(11)|0s</StoredType>
+    </column>
+    <column id="535" parent="531" name="title">
+      <Position>3</Position>
       <StoredType>text|0s</StoredType>
     </column>
-    <index id="534" parent="531" name="PRIMARY">
+    <column id="536" parent="531" name="description">
+      <Position>4</Position>
+      <StoredType>text|0s</StoredType>
+    </column>
+    <column id="537" parent="531" name="dueDate">
+      <Position>5</Position>
+      <StoredType>date|0s</StoredType>
+    </column>
+    <column id="538" parent="531" name="status">
+      <Position>6</Position>
+      <StoredType>text|0s</StoredType>
+    </column>
+    <foreign-key id="539" parent="531" name="table_name_users_id_fk">
+      <ColNames>userId</ColNames>
+      <RefColNames>id</RefColNames>
+      <RefTableName>users</RefTableName>
+    </foreign-key>
+    <index id="540" parent="531" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="535" parent="531" name="PRIMARY">
+    <index id="541" parent="531" name="table_name_users_id_fk">
+      <ColNames>userId</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="542" parent="531" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="543" parent="532" name="id">
+      <AutoIncrement>17</AutoIncrement>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>int(11)|0s</StoredType>
+    </column>
+    <column id="544" parent="532" name="name">
+      <Position>2</Position>
+      <StoredType>text|0s</StoredType>
+    </column>
+    <index id="545" parent="532" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="546" parent="532" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>

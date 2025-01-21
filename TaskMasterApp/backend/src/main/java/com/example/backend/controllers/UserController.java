@@ -1,7 +1,9 @@
 package com.example.backend.controllers;
 
 import com.example.backend.dtos.UserDto;
+import com.example.backend.models.Task;
 import com.example.backend.models.User;
+import com.example.backend.services.TaskService;
 import com.example.backend.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,11 +14,14 @@ import java.util.List;
 @RequestMapping("/api/users")
 public class UserController {
 
-    private UserService userService;
+    private final UserService userService;
+    private final TaskService taskService;
 
     @Autowired
-    public UserController(UserService userService) {
+    public UserController(UserService userService,
+                          TaskService taskService) {
         this.userService = userService;
+        this.taskService = taskService;
     }
 
     @GetMapping()
@@ -29,5 +34,10 @@ public class UserController {
         String name = userDto.getName();
         System.out.println(name);
         return userService.createUser(name);
+    }
+
+    @GetMapping("/{userId}/tasks")
+    List<Task> getTaskForUser(@PathVariable Long userId) {
+        return taskService.getTaskForUser(userId);
     }
 }

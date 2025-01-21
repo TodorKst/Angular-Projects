@@ -5,6 +5,7 @@ import {TaskService} from '../../services/task/task.service';
 import {NewTaskComponent} from '../new-task/new-task.component';
 import {TaskComponent} from '../task/task.component';
 import {NgIf} from '@angular/common';
+import {UserService} from '../../services/user/user.service';
 
 @Component({
   selector: 'app-task-list',
