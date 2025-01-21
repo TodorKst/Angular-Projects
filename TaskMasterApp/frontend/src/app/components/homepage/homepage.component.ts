@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
-import {UserService} from '../../services/user/user.service';
-import {UserModel} from '../../models/user.model';
-import {NgClass} from '@angular/common';
-import {TaskListComponent} from '../task-list/task-list.component';
-import {TaskService} from '../../services/task/task.service';
-import {TaskModel} from '../../models/task.model';
+import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../services/user/user.service';
+import { TaskService } from '../../services/task/task.service';
+import { UserModel } from '../../models/user.model';
+import { TaskModel } from '../../models/task.model';
+import { NgClass } from '@angular/common';
+import { TaskListComponent } from '../task-list/task-list.component';
 
 @Component({
   selector: 'app-homepage',
@@ -26,8 +26,10 @@ export class HomepageComponent {
   }
 
   ngOnInit(): void {
-    this.userService.getAllUsers().subscribe((data: UserModel[]) => {
-      this.users = data;});
+    this.userService.users$.subscribe((data: UserModel[]) => {
+      this.users = data;
+    });
+    this.userService.getAllUsers();
   }
 
   selectUser(user: UserModel): void {
@@ -35,6 +37,4 @@ export class HomepageComponent {
     this.selectedUserTasks = this.taskService.getAllTasks().filter(task => task.userId === user.id);
     console.log('Selected user:', user.name);
   }
-
-
 }

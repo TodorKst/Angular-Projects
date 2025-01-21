@@ -5,18 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4005e63-314e-45d5-81cf-b0900c3df1a1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/models/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/repositories/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/services/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1513ffa2-f85e-40c1-b6f9-8c80a1cd14ec.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1513ffa2-f85e-40c1-b6f9-8c80a1cd14ec.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/dtos/UserDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/controllers/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/models/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/services/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/app/components/homepage/homepage.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/homepage/homepage.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/new-user/new-user.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/new-user/new-user.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/app/services/user/user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/services/user/user.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,8 +44,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="TypeScript File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -145,7 +140,7 @@
       <option name="presentableId" value="Default" />
       <updated>1737395712677</updated>
       <workItem from="1737395713793" duration="224000" />
-      <workItem from="1737396155383" duration="5572000" />
+      <workItem from="1737396155383" duration="10269000" />
     </task>
     <servers />
   </component>
