@@ -3,6 +3,7 @@ import { UserModel } from '../../models/user.model';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
+import {TaskModel} from '../../models/task.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,10 @@ export class UserService {
   private usersSubject: BehaviorSubject<UserModel[]> = new BehaviorSubject<UserModel[]>([]);
   users$: Observable<UserModel[]> = this.usersSubject.asObservable();
 
-  constructor(private http: HttpClient) {}
+  private tasksSubject: BehaviorSubject<TaskModel[]> = new BehaviorSubject<TaskModel[]>([]); // TaskModel should be the type of task
+  tasks$: Observable<TaskModel[]> = this.tasksSubject.asObservable(); // Public observable for tasks
 
+  constructor(private http: HttpClient) {}
 
   getAllUsers(): void {
     console.log('Fetching all users');
@@ -26,7 +29,6 @@ export class UserService {
         error: error => console.error('Error fetching users', error)
       });
   }
-
 
   createUser(name: string): void {
     this.http.post<UserModel>(this.apiUrl, { name }).subscribe(
@@ -41,7 +43,15 @@ export class UserService {
     );
   }
 
-  getTaskByUserId(userId: number): Observable<UserModel> {
-    return this.http.get<UserModel>(`${this.apiUrl}/${userId}/tasks`);
+
+  getTaskByUserId(userId: number): void {
+    console.log(`Fetching tasks for user ${userId}`);
+    this.http.get<TaskModel[]>(`${this.apiUrl}/${userId}/tasks`)
+      .pipe(
+        tap(tasks => this.tasksSubject.next(tasks)) // Update tasks subject with new data
+      )
+      .subscribe({
+        error: error => console.error('Error fetching tasks', error)
+      });
   }
 }

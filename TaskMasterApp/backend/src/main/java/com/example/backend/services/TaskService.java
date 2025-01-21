@@ -26,7 +26,11 @@ public class TaskService {
     }
 
     public List<Task> getTaskForUser(Long userId) {
-        return taskRepository.findByUserId(userId);
+        try {
+            return taskRepository.findTasksByUserId(userId);
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
+        }
     }
 
     public Task createTask(Task task) {

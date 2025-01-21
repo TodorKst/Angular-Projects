@@ -27,7 +27,7 @@
       <button class="add-task-btn" (click)="onStartAddTask()">Add Task</button>
     </div>
     <div class="task-list">
-      @for (task of selectedUserTasks(); track task.id) {
+      @for (task of selectedUserTasks; track task.id) {
 
         <app-task [task]="task" [selectedUserTasks]="selectedUserTasks" [selectedUser]="selectedUser"/>
 

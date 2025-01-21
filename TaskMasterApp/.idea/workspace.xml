@@ -5,13 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4005e63-314e-45d5-81cf-b0900c3df1a1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/controllers/TaskController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/models/Task.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/repositories/TaskRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/services/TaskService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/1513ffa2-f85e-40c1-b6f9-8c80a1cd14ec.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1513ffa2-f85e-40c1-b6f9-8c80a1cd14ec.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/models/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/models/Task.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/models/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/repositories/TaskRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/repositories/TaskRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/services/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/services/TaskService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/new-task/new-task.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/new-task/new-task.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/task-list/task-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/task-list/task-list.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/task-list/task-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/task-list/task-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/task/task.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/task/task.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/app/services/user/user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/services/user/user.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -141,7 +147,7 @@
       <option name="presentableId" value="Default" />
       <updated>1737395712677</updated>
       <workItem from="1737395713793" duration="224000" />
-      <workItem from="1737396155383" duration="11463000" />
+      <workItem from="1737396155383" duration="15731000" />
     </task>
     <servers />
   </component>

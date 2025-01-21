@@ -21,7 +21,7 @@ export class NewTaskComponent {
 
   @Input() selectedUser: UserModel | null = null;
   @Input() isAddingTask!: WritableSignal<boolean>;
-  @Input() userTasks!: WritableSignal<TaskModel[]>;
+  @Input() userTasks: TaskModel[] = [];
 
   constructor(private taskService: TaskService) {
   }
@@ -41,7 +41,7 @@ export class NewTaskComponent {
     }
     this.taskService.createTask(this.title, this.description, new Date(this.dueDate), this.selectedUser?.id || 0);
     this.isAddingTask.set(false);
-    this.userTasks.set(this.taskService.getAllTasks().filter(task => task.userId === this.selectedUser?.id));
+    this.userTasks = this.taskService.getAllTasks().filter(task => task.userId === this.selectedUser?.id);
   }
 
   closeDialog() {

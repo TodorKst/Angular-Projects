@@ -1408,7 +1408,7 @@
       <CollationName>latin1_swedish_ci</CollationName>
     </schema>
     <schema id="525" parent="1" name="taskmaster">
-      <LastIntrospectionLocalTimestamp>2025-01-21.00:38:17</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2025-01-21.01:21:11</LastIntrospectionLocalTimestamp>
       <CollationName>latin1_swedish_ci</CollationName>
     </schema>
     <user id="526" parent="1" name="mariadb.sys">
@@ -1440,7 +1440,7 @@
       <Position>1</Position>
       <StoredType>int(11)|0s</StoredType>
     </column>
-    <column id="534" parent="531" name="userId">
+    <column id="534" parent="531" name="user_id">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>int(11)|0s</StoredType>
@@ -1453,7 +1453,7 @@
       <Position>4</Position>
       <StoredType>text|0s</StoredType>
     </column>
-    <column id="537" parent="531" name="dueDate">
+    <column id="537" parent="531" name="due_date">
       <Position>5</Position>
       <StoredType>date|0s</StoredType>
     </column>
@@ -1462,7 +1462,7 @@
       <StoredType>text|0s</StoredType>
     </column>
     <foreign-key id="539" parent="531" name="table_name_users_id_fk">
-      <ColNames>userId</ColNames>
+      <ColNames>user_id</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>users</RefTableName>
     </foreign-key>
@@ -1472,7 +1472,7 @@
       <Unique>1</Unique>
     </index>
     <index id="541" parent="531" name="table_name_users_id_fk">
-      <ColNames>userId</ColNames>
+      <ColNames>user_id</ColNames>
       <Type>btree</Type>
     </index>
     <key id="542" parent="531" name="PRIMARY">
@@ -1481,7 +1481,7 @@
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="543" parent="532" name="id">
-      <AutoIncrement>17</AutoIncrement>
+      <AutoIncrement>18</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int(11)|0s</StoredType>

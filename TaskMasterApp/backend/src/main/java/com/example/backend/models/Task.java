@@ -13,15 +13,15 @@ public class Task {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "userId", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
-
+    @Column(name = "title")
     private String title;
-
+    @Column(name = "description")
     private String description;
-
+    @Column(name = "due_date")
     private Date dueDate;
-
+    @Column(name = "status")
     private String status;
 
     public Long getId() {
