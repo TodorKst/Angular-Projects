@@ -29,7 +29,7 @@
     <div class="task-list">
       @for (task of selectedUserTasks; track task.id) {
 
-        <app-task [task]="task" [selectedUserTasks]="selectedUserTasks" [selectedUser]="selectedUser"/>
+        <app-task [task]="task" [selectedUser]="selectedUser"/>
 
       }
     </div>
@@ -46,6 +46,6 @@
 }
 
 @if (isAddingTask()) {
-  <app-new-task [isAddingTask]="isAddingTask" [selectedUser]="selectedUser" [userTasks]="selectedUserTasks"/>
+  <app-new-task [isAddingTask]="isAddingTask" [selectedUser]="selectedUser"/>
 }
 

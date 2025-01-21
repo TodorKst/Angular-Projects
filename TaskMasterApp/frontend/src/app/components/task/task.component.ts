@@ -3,6 +3,7 @@ import {TaskModel} from '../../models/task.model';
 import {DatePipe, NgClass, TitleCasePipe} from '@angular/common';
 import {TaskService} from '../../services/task/task.service';
 import {UserModel} from '../../models/user.model';
+import {UserService} from '../../services/user/user.service';
 
 @Component({
   selector: 'app-task',
@@ -18,7 +19,6 @@ import {UserModel} from '../../models/user.model';
 export class TaskComponent {
 
   @Input() task: TaskModel | null = null;
-  @Input() selectedUserTasks: TaskModel[] = [];
   @Input() selectedUser: UserModel | null = null;
 
   constructor(private taskService: TaskService) {
@@ -29,15 +29,14 @@ export class TaskComponent {
       return;
     }
     this.taskService.deleteTask(id);
-    this.selectedUserTasks = this.taskService.getAllTasks().filter(task => task.userId === this.selectedUser?.id);
   }
+
 
   updateStatus(taskId: number | undefined) {
     if (!taskId) {
       return;
     }
     this.taskService.updateTaskStatus(taskId);
-    console.log(this.taskService.getAllTasks().filter(task => task.userId === this.selectedUser?.id));
   }
 
 }

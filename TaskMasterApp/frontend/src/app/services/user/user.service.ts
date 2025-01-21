@@ -20,7 +20,6 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
   getAllUsers(): void {
-    console.log('Fetching all users');
     this.http.get<UserModel[]>(this.apiUrl)
       .pipe(
         tap(users => this.usersSubject.next(users))

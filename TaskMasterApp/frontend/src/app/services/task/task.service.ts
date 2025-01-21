@@ -1,67 +1,70 @@
 import {afterNextRender, Injectable} from '@angular/core';
 import { TaskModel } from '../../models/task.model';
 import { TaskDummyData } from '../dummydata/task-dummy-data';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {UserModel} from '../../models/user.model';
+import {HttpClient} from '@angular/common/http';
+import {tap} from 'rxjs/operators';
+import {UserService} from '../user/user.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TaskService {
-  private tasks: TaskModel[] = [];
-  private id: number = 13;
-  private readonly storageKey = 'tasks';
+  private readonly apiUrl = 'http://localhost:8080/api/tasks';
 
-  constructor() {
-    this.loadTasks();
+  private usersSubject: BehaviorSubject<UserModel[]> = new BehaviorSubject<UserModel[]>([]);
+  users$: Observable<UserModel[]> = this.usersSubject.asObservable();
+
+  private tasksSubject: BehaviorSubject<TaskModel[]> = new BehaviorSubject<TaskModel[]>([]); // TaskModel should be the type of task
+  tasks$: Observable<TaskModel[]> = this.tasksSubject.asObservable(); // Public observable for tasks
+
+  constructor(private http: HttpClient,
+              private userService: UserService) {}
+
+  getAllTasks(): void {
+    this.http.get<TaskModel[]>(this.apiUrl)
+      .pipe(
+        tap(tasks => this.tasksSubject.next(tasks))
+      )
+      .subscribe({
+        error: error => console.error('Error fetching tasks', error)
+      });
   }
 
-  private loadTasks() {
-    const tasks = localStorage.getItem(this.storageKey);
-    if (tasks) {
-      this.tasks = JSON.parse(tasks);
-      this.id = this.tasks.reduce((prev, current) => (prev.id > current.id) ? prev : current).id + 1;
-      console.log(this.id);
-    } else {
-      this.tasks = TaskDummyData;
-      this.saveTasksToStorage();
-    }
-  }
-
-  private saveTasksToStorage(): void {
-    localStorage.setItem(this.storageKey, JSON.stringify(this.tasks));
-  }
-
-
-  getAllTasks(): TaskModel[] {
-    return this.tasks;
-  }
 
   createTask(title: string, description: string, date: Date, userId: number): void {
-    const task: TaskModel = {
-      id: this.id++,
+    const task = {
       userId: userId,
       title,
       description,
-      dueDate: date,
-      status: 'Open'
+      dueDate: date
     };
-    this.tasks.push(task);
-    this.saveTasksToStorage(); // Save to localStorage
-    console.log(task);
+    this.http.post<UserModel>(this.apiUrl, task).subscribe(
+      (newUser) => {
+        console.log('Task created successfully', newUser);
+        const currentUsers = this.usersSubject.getValue();
+        this.usersSubject.next([...currentUsers, newUser]);
+        this.userService.getTaskByUserId(userId);
+      },
+      (error) => {
+        console.error('Error creating task', error);
+      }
+    );
   }
 
   deleteTask(taskId: number): void {
-    this.tasks = this.tasks.filter(task => task.id !== taskId);
-    this.saveTasksToStorage(); // Update localStorage
+
   }
 
   updateTaskStatus(taskId: number): void {
-    const task = this.tasks.find(task => task.id === taskId);
-
-    if (task?.status === 'Open') {
-      task.status = 'In Progress';
-    } else if (task?.status === 'In Progress') {
-      task.status = 'Completed';
-    }
-    this.saveTasksToStorage(); // Update localStorage
+    // const task = this.tasks.find(task => task.id === taskId);
+    //
+    // if (task?.status === 'Open') {
+    //   task.status = 'In Progress';
+    // } else if (task?.status === 'In Progress') {
+    //   task.status = 'Completed';
+    // }
+    // this.saveTasksToStorage(); // Update localStorage
   }
 }

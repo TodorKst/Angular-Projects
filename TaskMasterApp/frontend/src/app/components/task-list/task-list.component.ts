@@ -60,9 +60,9 @@ export class TaskListComponent {
   filterTasks(event: Event) {
     this.currentFilter = (event.target as HTMLSelectElement).value;
     if (this.currentFilter === 'All') {
-      this.selectedUserTasks = this.taskService.getAllTasks().filter(task => task.userId === this.selectedUser?.id);
+      // this.selectedUserTasks = this.taskService.getAllTasks().filter(task => task.userId === this.selectedUser?.id);
     } else {
-      this.selectedUserTasks = this.taskService.getAllTasks().filter(task => task.userId === this.selectedUser?.id && task.status === this.currentFilter);
+      // this.selectedUserTasks = this.taskService.getAllTasks().filter(task => task.userId === this.selectedUser?.id && task.status === this.currentFilter);
     }
   }
 

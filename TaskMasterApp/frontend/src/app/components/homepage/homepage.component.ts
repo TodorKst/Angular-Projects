@@ -18,7 +18,6 @@ import { TaskListComponent } from '../task-list/task-list.component';
 })
 export class HomepageComponent {
   selectedUser: UserModel | null = null;
-  selectedUserTasks: TaskModel[] = [];
   users: UserModel[] = [];
 
   constructor(private userService: UserService,
@@ -34,7 +33,6 @@ export class HomepageComponent {
 
   selectUser(user: UserModel): void {
     this.selectedUser = user;
-    this.selectedUserTasks = this.taskService.getAllTasks().filter(task => task.userId === user.id);
     console.log('Selected user:', user.name);
   }
 }

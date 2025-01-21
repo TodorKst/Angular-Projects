@@ -3,6 +3,7 @@ import {FormsModule} from '@angular/forms';
 import {TaskService} from '../../services/task/task.service';
 import {UserModel} from '../../models/user.model';
 import {TaskModel} from '../../models/task.model';
+import {UserService} from '../../services/user/user.service';
 
 @Component({
   selector: 'app-new-task',
@@ -17,13 +18,13 @@ export class NewTaskComponent {
   title = '';
   description = '';
   dueDate = this.getTodayDate();
-  defaultDate = this.getTodayDate();
+  selectedUserTasks: TaskModel[] = [];
+
 
   @Input() selectedUser: UserModel | null = null;
   @Input() isAddingTask!: WritableSignal<boolean>;
-  @Input() userTasks: TaskModel[] = [];
 
-  constructor(private taskService: TaskService) {
+  constructor(private taskService: TaskService, private userService: UserService) {
   }
 
   getTodayDate(): string {
@@ -34,14 +35,29 @@ export class NewTaskComponent {
     return `${year}-${month}-${day}`;
   }
 
-  onCreateTask() {
+  ngOnChanges(): void {
+    this.userService.tasks$.subscribe((data: TaskModel[]) => {
+      this.selectedUserTasks = data;
+    });
+    if (this.selectedUser !== null) {
+      this.userService.getTaskByUserId(this.selectedUser?.id);
+    }
+  }
+
+  createTask() {
     if (!this.title || !this.description || !this.dueDate) {
       alert('Please fill in all fields.');
       return;
     }
+
+
     this.taskService.createTask(this.title, this.description, new Date(this.dueDate), this.selectedUser?.id || 0);
+
+    if (this.selectedUser !== null) {
+      this.userService.getTaskByUserId(this.selectedUser?.id);
+    }
+    console.log(this.selectedUserTasks);
     this.isAddingTask.set(false);
-    this.userTasks = this.taskService.getAllTasks().filter(task => task.userId === this.selectedUser?.id);
   }
 
   closeDialog() {
