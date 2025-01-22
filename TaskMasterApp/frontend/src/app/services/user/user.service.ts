@@ -53,4 +53,15 @@ export class UserService {
         error: error => console.error('Error fetching tasks', error)
       });
   }
+
+  getFilteredTaskByUserId(userId: number, filter: string): void {
+    console.log(`Fetching tasks for user ${userId}, with filter ${filter}`);
+    this.http.get<TaskModel[]>(`${this.apiUrl}/${userId}/tasks?filter=${filter}`)
+      .pipe(
+        tap(tasks => this.tasksSubject.next(tasks)) // Update tasks subject with new data
+      )
+      .subscribe({
+        error: error => console.error('Error fetching tasks', error)
+      });
+  }
 }

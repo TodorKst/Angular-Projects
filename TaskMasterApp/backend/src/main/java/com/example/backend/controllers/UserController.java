@@ -36,7 +36,7 @@ public class UserController {
     }
 
     @GetMapping("/{userId}/tasks")
-    List<Task> getTaskForUser(@PathVariable Long userId) {
-        return taskService.getTaskForUser(userId);
+    List<Task> getTaskForUser(@PathVariable Long userId, @RequestParam(required = false) String filter) {
+        return taskService.getTaskForUserAndStatus(userId, filter);
     }
 }

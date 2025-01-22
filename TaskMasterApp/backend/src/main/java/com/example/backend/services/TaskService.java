@@ -33,6 +33,17 @@ public class TaskService {
         }
     }
 
+    public List<Task> getTaskForUserAndStatus(Long userId, String status) {
+        if (status == null) {
+            return getTaskForUser(userId);
+        }
+        try {
+            return taskRepository.findTasksByUserIdAndStatus(userId, status);
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
+        }
+    }
+
     public Task createTask(Task task) {
         return taskRepository.save(task);
     }
