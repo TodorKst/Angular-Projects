@@ -57,6 +57,14 @@ export class TaskService {
   }
 
   deleteTask(taskId: number): void {
+    this.http.delete<{}>(`${this.apiTaskUrl}/${taskId}`).subscribe({
+      next: (response) => {
+        this.getFilteredTaskByUserId(this.currentUserId, this.currentFilter);
+      },
+      error: (error) => {
+        console.error('Error in DELETE request:', error);
+      }
+    })
   }
 
   updateTaskStatus(taskId: number): void {
@@ -83,6 +91,7 @@ export class TaskService {
         error: error => console.error('Error fetching tasks', error)
       });
     this.currentUserId = userId;
+    this.currentFilter = 'All';
   }
 
   getFilteredTaskByUserId(userId: number, filter: string): void {

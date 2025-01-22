@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4005e63-314e-45d5-81cf-b0900c3df1a1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/controllers/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/controllers/TaskController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/services/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/services/TaskService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/new-task/new-task.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/new-task/new-task.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/task-list/task-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/task-list/task-list.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/task/task.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/task/task.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/app/services/task/task.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/services/task/task.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/services/user/user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/services/user/user.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,7 +136,7 @@
       <workItem from="1737395713793" duration="224000" />
       <workItem from="1737396155383" duration="15731000" />
       <workItem from="1737486579262" duration="2796000" />
-      <workItem from="1737572653326" duration="4760000" />
+      <workItem from="1737572653326" duration="5080000" />
     </task>
     <servers />
   </component>
