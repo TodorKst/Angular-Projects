@@ -47,9 +47,9 @@ public class TaskController {
         return taskService.createTask(task);
     }
 
-    @PutMapping()
-    Task updateTask(Task task) {
-        return taskService.updateTask(task);
+    @PutMapping("/{id}")
+    Task updateTask(@PathVariable Long id) {
+        return taskService.updateTaskStatus(id);
     }
 
     @DeleteMapping("/{id}")

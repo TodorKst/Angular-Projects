@@ -1,4 +1,4 @@
-import {Component, input, Input, signal, WritableSignal} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {TaskModel} from '../../models/task.model';
 import {DatePipe, NgClass, TitleCasePipe} from '@angular/common';
 import {TaskService} from '../../services/task/task.service';
@@ -20,8 +20,15 @@ export class TaskComponent {
 
   @Input() task: TaskModel | null = null;
   @Input() selectedUser: UserModel | null = null;
+  selectedUserTasks: TaskModel[] = [];
 
   constructor(private taskService: TaskService) {
+  }
+
+  ngOnInit(): void {
+    this.taskService.tasks$.subscribe((data: TaskModel[]) => {
+      this.selectedUserTasks = data;
+    });
   }
 
   deleteTask(id: number | undefined): void {
@@ -37,6 +44,9 @@ export class TaskComponent {
       return;
     }
     this.taskService.updateTaskStatus(taskId);
+    if (this.selectedUser) {
+      this.taskService.getFilteredTaskByUserId(this.selectedUser?.id, this.taskService.getCurrentFilter());
+    }
   }
 
 }

@@ -36,11 +36,11 @@ export class NewTaskComponent {
   }
 
   ngOnChanges(): void {
-    this.userService.tasks$.subscribe((data: TaskModel[]) => {
+    this.taskService.tasks$.subscribe((data: TaskModel[]) => {
       this.selectedUserTasks = data;
     });
     if (this.selectedUser !== null) {
-      this.userService.getTaskByUserId(this.selectedUser?.id);
+      this.taskService.getTaskByUserId(this.selectedUser?.id);
     }
   }
 
@@ -54,9 +54,8 @@ export class NewTaskComponent {
     this.taskService.createTask(this.title, this.description, new Date(this.dueDate), this.selectedUser?.id || 0);
 
     if (this.selectedUser !== null) {
-      this.userService.getTaskByUserId(this.selectedUser?.id);
+      this.taskService.getTaskByUserId(this.selectedUser?.id);
     }
-    console.log(this.selectedUserTasks);
     this.isAddingTask.set(false);
   }
 

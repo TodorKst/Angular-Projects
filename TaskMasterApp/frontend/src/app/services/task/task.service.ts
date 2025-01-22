@@ -11,7 +11,10 @@ import {UserService} from '../user/user.service';
   providedIn: 'root'
 })
 export class TaskService {
-  private readonly apiUrl = 'http://localhost:8080/api/tasks';
+  private currentFilter = '';
+  private currentUserId = 0;
+  private readonly apiTaskUrl = 'http://localhost:8080/api/tasks';
+  private readonly apiUserUrl = 'http://localhost:8080/api/users';
 
   private usersSubject: BehaviorSubject<UserModel[]> = new BehaviorSubject<UserModel[]>([]);
   users$: Observable<UserModel[]> = this.usersSubject.asObservable();
@@ -23,7 +26,7 @@ export class TaskService {
               private userService: UserService) {}
 
   getAllTasks(): void {
-    this.http.get<TaskModel[]>(this.apiUrl)
+    this.http.get<TaskModel[]>(this.apiTaskUrl)
       .pipe(
         tap(tasks => this.tasksSubject.next(tasks))
       )
@@ -40,12 +43,12 @@ export class TaskService {
       description,
       dueDate: date
     };
-    this.http.post<UserModel>(this.apiUrl, task).subscribe(
+    this.http.post<UserModel>(this.apiTaskUrl, task).subscribe(
       (newUser) => {
         console.log('Task created successfully', newUser);
         const currentUsers = this.usersSubject.getValue();
         this.usersSubject.next([...currentUsers, newUser]);
-        this.userService.getTaskByUserId(userId);
+        this.getTaskByUserId(userId);
       },
       (error) => {
         console.error('Error creating task', error);
@@ -54,17 +57,53 @@ export class TaskService {
   }
 
   deleteTask(taskId: number): void {
-
   }
 
   updateTaskStatus(taskId: number): void {
-    // const task = this.tasks.find(task => task.id === taskId);
-    //
-    // if (task?.status === 'Open') {
-    //   task.status = 'In Progress';
-    // } else if (task?.status === 'In Progress') {
-    //   task.status = 'Completed';
-    // }
-    // this.saveTasksToStorage(); // Update localStorage
+    console.log(`Updating task status for task ${taskId}`);
+    this.http.put<{}>(`${this.apiTaskUrl}/${taskId}`, {})
+      .subscribe({
+        next: (response) => {
+          // Update the tasks observable with the new data from the server(the updated task)
+          this.getFilteredTaskByUserId(this.currentUserId, this.currentFilter);
+        },
+        error: (error) => {
+          console.error('Error in PUT request:', error);
+        }
+      });
+  }
+
+  getTaskByUserId(userId: number): void {
+    console.log(`Fetching tasks for user ${userId}`);
+    this.http.get<TaskModel[]>(`${this.apiUserUrl}/${userId}/tasks`)
+      .pipe(
+        tap(tasks => this.tasksSubject.next(tasks)) // Update tasks subject with new data
+      )
+      .subscribe({
+        error: error => console.error('Error fetching tasks', error)
+      });
+    this.currentUserId = userId;
+  }
+
+  getFilteredTaskByUserId(userId: number, filter: string): void {
+    if (!filter || filter !== 'Open' && filter !== 'In Progress' && filter !== 'Completed') {
+      this.getTaskByUserId(userId);
+      console.log(this.tasks$.pipe());
+      return;
+    }
+    console.log(`Fetching tasks for user ${userId}, with filter ${filter}`);
+    this.http.get<TaskModel[]>(`${this.apiUserUrl}/${userId}/tasks?filter=${filter}`)
+      .pipe(
+        tap(tasks => this.tasksSubject.next(tasks)) // Update tasks subject with new data
+      )
+      .subscribe({
+        error: error => console.error('Error fetching tasks', error)
+      });
+    this.currentFilter = filter;
+    this.currentUserId = userId;
+  }
+
+  getCurrentFilter(): string {
+    return this.currentFilter;
   }
 }

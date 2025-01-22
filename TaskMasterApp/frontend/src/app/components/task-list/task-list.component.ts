@@ -31,14 +31,14 @@ export class TaskListComponent {
   }
 
   ngOnInit(): void {
-    this.userService.tasks$.subscribe((data: TaskModel[]) => {
+    this.taskService.tasks$.subscribe((data: TaskModel[]) => {
       this.selectedUserTasks = data;
     });
   }
 
   ngOnChanges(): void {
     if (this.selectedUser !== null) {
-      this.userService.getTaskByUserId(this.selectedUser?.id);
+      this.taskService.getTaskByUserId(this.selectedUser?.id);
     }
   }
 
@@ -65,11 +65,11 @@ export class TaskListComponent {
     this.currentFilter = (event.target as HTMLSelectElement).value;
     if (this.currentFilter === 'All') {
       if (this.selectedUser !== null) {
-        this.userService.getTaskByUserId(this.selectedUser?.id);
+        this.taskService.getTaskByUserId(this.selectedUser?.id);
       }
     } else {
       if (this.selectedUser !== null) {
-        this.userService.getFilteredTaskByUserId(this.selectedUser?.id, this.currentFilter);
+        this.taskService.getFilteredTaskByUserId(this.selectedUser?.id, this.currentFilter);
       }
 
     }

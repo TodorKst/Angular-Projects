@@ -11,6 +11,8 @@ import {TaskModel} from '../../models/task.model';
 export class UserService {
   private readonly apiUrl = 'http://localhost:8080/api/users';
 
+
+
   private usersSubject: BehaviorSubject<UserModel[]> = new BehaviorSubject<UserModel[]>([]);
   users$: Observable<UserModel[]> = this.usersSubject.asObservable();
 
@@ -43,25 +45,4 @@ export class UserService {
   }
 
 
-  getTaskByUserId(userId: number): void {
-    console.log(`Fetching tasks for user ${userId}`);
-    this.http.get<TaskModel[]>(`${this.apiUrl}/${userId}/tasks`)
-      .pipe(
-        tap(tasks => this.tasksSubject.next(tasks)) // Update tasks subject with new data
-      )
-      .subscribe({
-        error: error => console.error('Error fetching tasks', error)
-      });
-  }
-
-  getFilteredTaskByUserId(userId: number, filter: string): void {
-    console.log(`Fetching tasks for user ${userId}, with filter ${filter}`);
-    this.http.get<TaskModel[]>(`${this.apiUrl}/${userId}/tasks?filter=${filter}`)
-      .pipe(
-        tap(tasks => this.tasksSubject.next(tasks)) // Update tasks subject with new data
-      )
-      .subscribe({
-        error: error => console.error('Error fetching tasks', error)
-      });
-  }
 }

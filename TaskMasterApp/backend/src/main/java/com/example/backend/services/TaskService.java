@@ -48,11 +48,17 @@ public class TaskService {
         return taskRepository.save(task);
     }
 
-    public Task updateTask(Task task) {
-        if (task == null) {
-            return null;
+    public Task updateTaskStatus(Long taskId) {
+        Task taskToUpdate = taskRepository.findById(taskId).orElse(null);
+        if (taskToUpdate == null) {
+            throw new RuntimeException("Task not found");
         }
-        return taskRepository.save(task);
+        if (taskToUpdate.getStatus().equals("Open")) {
+            taskToUpdate.setStatus("In Progress");
+        } else if (taskToUpdate.getStatus().equals("In Progress")) {
+            taskToUpdate.setStatus("Completed");
+        }
+        return taskRepository.save(taskToUpdate);
     }
 
     public void deleteTask(Long id) {
