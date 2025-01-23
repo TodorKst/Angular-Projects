@@ -13,7 +13,6 @@
               <option value="Completed">Completed</option>
             </select>
 
-
             @if (sortingOrder() === 'asc') {
               <span class="sort" (click)="changeSortOrder()">Sort Descending</span>
             } @else {
@@ -21,31 +20,32 @@
             }
           </div>
         </div>
-
-
       </div>
       <button class="add-task-btn" (click)="onStartAddTask()">Add Task</button>
     </div>
-    <div class="task-list">
-      @for (task of selectedUserTasks; track task.id) {
 
-        <app-task [task]="task" [selectedUser]="selectedUser"/>
-
+      @if (selectedUserTasks.length > 0) {
+        <div class="task-list">
+        @for (task of selectedUserTasks; track task.id) {
+          <app-task [task]="task" [selectedUser]="selectedUser" />
+        }
+        </div>
+      }  @else {
+        <div class="empty-task-list">
+          <p>No tasks available for {{ selectedUser.name }}. Add some tasks to get started!</p>
+          <button class="add-task-btn" (click)="onStartAddTask()">Add First Task</button>
+        </div>
       }
-    </div>
+
   </div>
-
-
-
 } @else {
   <div class="task-list-container">
     <div class="task-list">
-    <app-task />
+      <app-task />
     </div>
   </div>
 }
 
 @if (isAddingTask()) {
-  <app-new-task [isAddingTask]="isAddingTask" [selectedUser]="selectedUser"/>
+  <app-new-task [isAddingTask]="isAddingTask" [selectedUser]="selectedUser" />
 }
-

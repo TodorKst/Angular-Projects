@@ -111,4 +111,30 @@
   outline: none; /* Removes the default white border */
 }
 
+.empty-task-list {
+  text-align: center;
+  margin-top: 2rem;
+  color: #d3b39d; /* Match theme color */
+  font-size: 1.1rem;
+}
+
+.empty-task-list p {
+  margin-bottom: 1rem;
+}
+
+.empty-task-list .add-task-btn {
+  background-color: #e67e00;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s ease;
+}
+
+.empty-task-list .add-task-btn:hover {
+  background-color: #ffa500;
+}
+
 
